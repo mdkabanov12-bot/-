@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система записи услуг</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="auth-container" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="auth-card" style="text-align: center;">
+            <h1>Система записи услуг</h1>
+            <p style="color: white; margin-bottom: 30px;">Добро пожаловать!</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <a href="login.html" class="btn btn-primary">Войти</a>
+                <a href="register.html" class="btn btn-secondary">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Проверка: если уже залогинен - редирект на dashboard
+        const token = localStorage.getItem('access_token');
+        if (token) {
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>

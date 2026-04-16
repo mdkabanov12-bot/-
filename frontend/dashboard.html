@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <h1>Личный кабинет</h1>
+            <div class="user-info">
+                <span id="userName">Загрузка...</span>
+                <span id="userRole" class="user-role"></span>
+                <button id="logoutBtn" class="btn btn-secondary">Выйти</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Секция уведомлений -->
+        <section class="dashboard-section">
+            <h2>Уведомления</h2>
+            <div id="notificationsList" class="notifications-list">
+                <p class="loading">Загрузка уведомлений...</p>
+            </div>
+            <button id="deleteAllBtn" class="btn btn-secondary" style="display: none; background: #e74c3c; color: white;">
+                Удалить все уведомления
+            </button>
+        </section>
+
+        <!-- Секция моих записей -->
+        <section class="dashboard-section">
+            <h2>Мои записи</h2>
+            <div id="appointmentsList" class="appointments-list">
+                <p class="loading">Загрузка записей...</p>
+            </div>
+        </section>
+
+        <!-- Секция доступных услуг (только для обычных пользователей) -->
+        <section class="dashboard-section" id="servicesSection">
+            <h2>Доступные услуги</h2>
+            <div id="servicesList" class="services-list">
+                <p class="loading">Загрузка услуг...</p>
+            </div>
+        </section>
+
+        <!-- Админ панель (только для админов) -->
+        <section class="dashboard-section admin-panel" id="adminSection" style="display: none;">
+            <h2>Панель администратора</h2>
+            <div class="admin-actions">
+                <button class="btn btn-primary" onclick="showCreateServiceForm()">
+                    Создать услугу
+                </button>
+            </div>
+            <div id="adminServicesList" class="admin-services-list">
+                <p class="loading">Загрузка услуг...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно создания услуги -->
+    <div id="createServiceModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Создать услугу</h2>
+            <form id="createServiceForm">
+                <div class="form-group">
+                    <label for="serviceName">Название услуги</label>
+                    <input type="text" id="serviceName" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceDuration">Длительность (минуты)</label>
+                    <input type="number" id="serviceDuration" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceStartTime">Время начала</label>
+                    <input type="datetime-local" id="serviceStartTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно изменения времени услуги -->
+    <div id="changeTimeModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Изменить время услуги</h2>
+            <form id="changeTimeForm">
+                <input type="hidden" id="changeServiceId">
+                <div class="form-group">
+                    <label for="newServiceStartTime">Новое время начала</label>
+                    <input type="datetime-local" id="newServiceStartTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Система записи услуг</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
