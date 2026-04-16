@@ -38,7 +38,3 @@ app.include_router(user_appointments.router, prefix="/api", tags=["user-appointm
 app.include_router(admin.router, prefix="/api", tags=["admin"])
 app.include_router(notifications.router, prefix="/api/notifications", tags=["notifications-admin"])
 app.include_router(auth.router, prefix="/api", tags=["auth"])
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
